@@ -7,25 +7,8 @@
 			url('e.jpg') no-repeat fixed;
 			background-size: cover;}
 		h1{font-size:32px;color:#D1E3F1;text-align:center;}
-		.selecte{
-			text-align: center;
-		}
-		select{
-			width: 300px;
-			height: 40px;
-			text-align: center;
-			font-weight: bold;
-			font-size: 18px;
-			border-radius: 9%;
-			background-color: #0093D8;
-			color:#D1E3F1;
-		}
-		select option{
-			
-			font-weight: bold;
-			font-size: 18px;
-		}
-		label{font-size: 24px;font-weight: bold;}
+		
+	
 		.up{
 			text-align: center;
 			background-color:#D1E3F1;
@@ -38,29 +21,49 @@
 		}
 		#ici{
 			
-			margin:60px auto;
+			margin:160px auto;
 		}
+		.drop{
+			width: 300px;
+			text-align: center;
+			font-weight: bold;
+			font-size: 18px;
+			background-color: #D1E3F1;
+			color:#0093D8;
+			margin:auto;
+			padding: 10px 0px;
+		}
+		.down{display:none;}
+		.drop:hover .down{display:block;}
+		.liste{font-weight: bold;color:#D1E3F1;background-color:#0093D8;}
+		.liste:hover{
+			background-color: #D1E3F1;
+			color:#0093D8;
+		}
+		li{list-style-type: none;margin:0px;border-bottom: 1px solid white;padding:10px 0px;}
+		ul{background-color: red;text-align: center;margin:0px;padding:0px;}
 	</style>
 	</head>
 	<body>
 		<h1 id='h'>API Users show</h1>
-		<div class="selecte">
-		<form method ='post' action='' id='myForm'>
-			<select name='choise' id='choise' onchange="check()">
-				<option class='' value='c'>c</option>
-				<option class='' value='bob'>bob</option>
-				<option class='' value='jean'>jean</option>
-				<option class='' value='arthur'>arthur</option>
-			</select>
-		
-		</form>
+
+
+		<div class="drop">
+			<div class="dropdown">Liste users</div>
+			<ul class="down">
+				<li onclick=check(this.innerText); class='liste'>c</li>
+				<li onclick=check(this.innerText); class='liste'>bob</li>
+				<li onclick=check(this.innerText); class='liste'>jean</li>
+				<li onclick=check(this.innerText); class='liste'>arthur</li>
+			</ul>
 		</div>
+
 		<div id="ici"></div>
 	</body>
 	<script>
-		let r;
-		function check(){
-			r = document.getElementById('choise').value;
+		//let r;
+		function check(r){
+			//r = document.getElementById('choise').value;
 			var req=new XMLHttpRequest();
 			req.open("GET",`user.php?name=${r}`,true);
 			req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -69,7 +72,7 @@
 				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 				console.log(req.response);
 				let users = JSON.parse(req.response);
-				console.log(users);
+				//console.log(users);
 				//users["data"].map(f=>document.getElementById('ici').innerHTML +=`<div>${f.id} ${f.name} ${f.email}</div>`);
 				document.getElementById('ici').innerHTML =`<div class="up">${users["data"][0].id} ${users["data"][0].name} ${users["data"][0].email}</div>`;
 				}
