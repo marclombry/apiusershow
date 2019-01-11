@@ -25,13 +25,13 @@
 		}
 		.drop{
 			width: 300px;
-			text-align: center;
+			
 			font-weight: bold;
 			font-size: 18px;
 			background-color: #D1E3F1;
 			color:#0093D8;
 			margin:auto;
-			padding: 10px 0px;
+			
 		}
 		.down{display:none;}
 		.drop:hover .down{display:block;}
@@ -39,6 +39,21 @@
 		.liste:hover{
 			background-color: #D1E3F1;
 			color:#0093D8;
+		}
+		.arrow{
+			content: '';
+			position: relative;
+			width: 0; height: 0;
+			border-color: transparent;
+			border-top-color: #444; 
+			border-width: 6px;
+			border-style: solid;
+			
+		}
+		.dropdown{
+			display: flex;
+			justify-content: space-between;
+			padding: 0 10px;
 		}
 		li{list-style-type: none;margin:0px;border-bottom: 1px solid white;padding:10px 0px;}
 		ul{background-color: red;text-align: center;margin:0px;padding:0px;}
@@ -49,7 +64,7 @@
 
 
 		<div class="drop">
-			<div class="dropdown">Liste users</div>
+			<div class="dropdown"><p class="texte">Liste users </p><p class="arrow"></p></div>
 			<ul class="down">
 				<li onclick=check(this.innerText); class='liste'>c</li>
 				<li onclick=check(this.innerText); class='liste'>bob</li>
